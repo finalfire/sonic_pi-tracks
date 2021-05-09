@@ -1,0 +1,36 @@
+use_random_seed 44
+
+live_loop :c do
+  with_fx :echo, mix: rrand(0.25, 0.75), phase: 0.35 do
+    use_synth :piano
+    
+    play chord(:F, :major)
+    sleep 1
+    
+    play chord(:Bb, :major)
+    sleep 1
+    
+    play chord(:D, :minor)
+    sleep 1
+    
+    play chord(:C, :sus4)
+    sleep 0.25
+    
+    play chord(:C, :major)
+    sleep 0.75
+  end
+end
+
+live_loop :b do
+  with_fx :reverb, room: 0.75 do
+    sample :bd_boom, amp: 8, rate: 1
+  end
+  sleep 2
+end
+
+live_loop :a do
+  with_fx :echo, mix: 0.25 do
+    sample :glitch_perc1, amp: 0.5, rate: 1
+    sleep 8
+  end
+end
