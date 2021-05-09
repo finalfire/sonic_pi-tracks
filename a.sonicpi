@@ -1,0 +1,22 @@
+live_loop :base do
+  sample :ambi_glass_hum, amp: 0.98
+  sleep (range 0.3, 2, 0.1).choose
+end
+
+live_loop :ding do
+  sample :ambi_haunted_hum, amp: 0.35, attack: 0.25, release: 2
+  sleep [2, 4, 8, 16].choose
+end
+
+live_loop :bass do
+  use_synth :beep
+  play_pattern_timed [:a3, :e3, :d3, :e3], [4, 8, 6, 4],
+    attack: 0.5, sustain: 4, relase: 2
+end
+
+live_loop :piano do
+  use_synth :piano
+  play_pattern_timed [:e3, :a3, :b3, :db4], [4, 1, 1, 4],
+    attack: 0.2, sustain: 2, release: 4
+end
+
